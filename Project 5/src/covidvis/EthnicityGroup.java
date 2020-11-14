@@ -59,6 +59,7 @@ public class EthnicityGroup {
             if (this.getName().equalsIgnoreCase(group.getName())) {
                 return 0;
             }
+            return 1;
         }
         return -1;
     }
@@ -73,6 +74,7 @@ public class EthnicityGroup {
             if (this.getCfr() == largest.getCfr()) {
                 return 0;
             }
+            return 1;
         }
         return -1;
     }
