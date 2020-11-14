@@ -52,5 +52,31 @@ public class SinglyLinkedList<T> implements QueueInterface<T> {
         return false;
     }
 
+
+    public int size() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+
+    public void remove(T largest) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    public EthnicityGroup get(int j) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    public void remove(int currentIndex) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+
     
 }
