@@ -1,5 +1,11 @@
 package covidvis;
 
+/**
+ * State object
+ * 
+ * @author Kyle Hart (kylegh
+ * @version 2020.11.13
+ */
 public class State {
     private SinglyLinkedList<EthnicityGroup> population;
 
