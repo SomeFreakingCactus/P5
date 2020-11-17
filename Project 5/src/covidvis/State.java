@@ -3,7 +3,7 @@ package covidvis;
 /**
  * State object
  * 
- * @author Kyle Hart (kylegh
+ * @author Kyle Hart (kylegh)
  * @version 2020.11.13
  */
 public class State {
@@ -30,11 +30,12 @@ public class State {
         // TODO Should this be largest or smallest?
         EthnicityGroup largest = current;
         int currentIndex = 0;
+        int size = population.size();
 
-        for (int i = 0; i < population.size(); i++) {
-            for (int j = i; j < population.size(); j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = i; j < size; j++) {
                 current = population.get(j);
-                // TODO Is this sign in the right sign direction?
+                // TODO Is this sign in the right direction?
                 if (current.toString().compareTo(largest.toString()) > 0) {
                     largest = current;
                     currentIndex = j;
@@ -63,20 +64,22 @@ public class State {
         // TODO Should this be largest or smallest?
         EthnicityGroup largest = current;
         int currentIndex = 0;
+        int size = population.size();
 
-        for (int i = 0; i < population.size(); i++) {
-            for (int j = i; j < population.size(); j++) {
-                current = population.get(j);
-                // TODO Is this sign in the right sign direction?
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = i; j < size; j++) {
+                current = population.get(j); // O(n)
+                // TODO Is this sign in the right direction?
                 if (current.compareCFR(largest) > 0) {
                     largest = current;
                     currentIndex = j;
-                }
-                population.remove(largest);
-                population.add(largest);
-            }
-        }
-        // TODO instantiate default case, or at least specify @precon.
+                } // O(n-1)
+                population.remove(largest); // <=O(n)
+                population.add(largest); // O(1)
+            } // O(n * (3n))
+        } // O((n-1) * n * (3n))
+          // TODO instantiate default case, or at least specify @precon.
+          // O(3n^3 - 3n^2) at list level. AKA remarkably inefficient.
     }
 
 }
