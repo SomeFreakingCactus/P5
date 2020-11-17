@@ -1,7 +1,7 @@
 package covidvis;
 
 /**
- * Represents each state which holds a 
+ * Represents each state which holds a
  * population of different ethnicity groups
  * 
  * @author Kyle Hart (kylegh)
@@ -15,35 +15,37 @@ public class State {
 
     /**
      * Creates a new State object
+     * 
      * @param name
-     * 		name of State
+     *            name of State
      * @param pop
-     * 		population of state
+     *            population of state
      */
     public State(String name, SinglyLinkedList<EthnicityGroup> pop) {
-    	stateName = name;
-    	population = pop;
+        stateName = name;
+        population = pop;
     }
-    
+
+
     /**
      * Returns name of State
+     * 
      * @return
-     * 		name of State
+     *         name of State
      */
-    public String getName()
-    {
-    	return stateName;
+    public String getName() {
+        return stateName;
     }
-    
+
+
     /**
      * Returns list of ethnicity groups in state
-     * @return
+     * 
+     * @return The ethnicity groups of the state.
      */
-    public SinglyLinkedList<EthnicityGroup> getList()
-    {
-    	return population;
+    public SinglyLinkedList<EthnicityGroup> getList() {
+        return population;
     }
-    
 
 
     /**
@@ -61,7 +63,6 @@ public class State {
         EthnicityGroup current = population.get(0);
         // TODO Should this be largest or smallest?
         EthnicityGroup largest = current;
-        int currentIndex = 0;
         int size = population.size();
 
         for (int i = 0; i < size; i++) {
@@ -70,7 +71,6 @@ public class State {
                 // TODO Is this sign in the right direction?
                 if (current.toString().compareTo(largest.toString()) > 0) {
                     largest = current;
-                    currentIndex = j;
                 }
                 population.remove(largest);
                 population.add(largest);
@@ -95,7 +95,6 @@ public class State {
         EthnicityGroup current = population.get(0);
         // TODO Should this be largest or smallest?
         EthnicityGroup largest = current;
-        int currentIndex = 0;
         int size = population.size();
 
         for (int i = 0; i < size - 1; i++) {
@@ -104,7 +103,6 @@ public class State {
                 // TODO Is this sign in the right direction?
                 if (current.compareCFR(largest) > 0) {
                     largest = current;
-                    currentIndex = j;
                 } // O(n-1)
                 population.remove(largest); // <=O(n)
                 population.add(largest); // O(1)
