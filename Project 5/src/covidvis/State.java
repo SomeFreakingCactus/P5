@@ -1,17 +1,49 @@
 package covidvis;
 
 /**
- * State object
+ * Represents each state which holds a 
+ * population of different ethnicity groups
  * 
  * @author Kyle Hart (kylegh)
  * @version 2020.11.13
+ * @author Joshua Sooknanan Sjoshua9)
+ * @version 2020.11.15
  */
 public class State {
     private SinglyLinkedList<EthnicityGroup> population;
+    private String stateName;
 
-    public State() {
-        // TODO Auto-generated constructor stub
+    /**
+     * Creates a new State object
+     * @param name
+     * 		name of State
+     * @param pop
+     * 		population of state
+     */
+    public State(String name, SinglyLinkedList<EthnicityGroup> pop) {
+    	stateName = name;
+    	population = pop;
     }
+    
+    /**
+     * Returns name of State
+     * @return
+     * 		name of State
+     */
+    public String getName()
+    {
+    	return stateName;
+    }
+    
+    /**
+     * Returns list of ethnicity groups in state
+     * @return
+     */
+    public SinglyLinkedList<EthnicityGroup> getList()
+    {
+    	return population;
+    }
+    
 
 
     /**
