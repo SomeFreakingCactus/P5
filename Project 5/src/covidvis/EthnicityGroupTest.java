@@ -102,4 +102,19 @@ public class EthnicityGroupTest extends TestCase {
         EthnicityGroup group1 = new EthnicityGroup("black", 12922, 3.7);
         assertEquals(1, this.group.compareCFR(group1));
     }
+    
+    /**
+     * tests getting the EthnicityGroup toString
+     */
+    public void testToString() {
+        assertEquals("asian: 3290 cases, 2.5% CFR", this.group.toString());
+    }
+    
+    /**
+     * tests getting the EthnicityGroup toString
+     */
+    public void testToString2() {
+        EthnicityGroup group1 = new EthnicityGroup("black", 12922, 3.7);
+        assertEquals("black: 12922 cases, 3.7% CFR", group1.toString());
+    }
 }

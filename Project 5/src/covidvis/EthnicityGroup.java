@@ -78,4 +78,13 @@ public class EthnicityGroup {
         }
         return -1;
     }
+    
+    /**
+     * String representation of the EthnicityGroup
+     * @return the string representation of the EthnicityGroup
+     */
+    public String toString() {
+        return this.getName() + ": " + this.getTotalCases() 
+            + " cases, " + this.getCfr() + "% CFR";
+    }
 }
