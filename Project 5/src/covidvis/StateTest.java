@@ -5,8 +5,9 @@ import student.TestCase;
 /**
  * Tests State.
  * 
- * @author Kyle Hart (kylegh
+ * @author Kyle Hart (kylegh)
  * @version 2020.11.18
+ * @author Joshua Sooknanan (Sjoshua9)
  */
 public class StateTest extends TestCase {
 

@@ -1,8 +1,7 @@
 package covidvis;
 
 /**
- * Represents each state which holds a
- * population of different ethnicity groups
+ * Represents each state which holds a population of different ethnicity groups
  * 
  * @author Kyle Hart (kylegh)
  * @version 2020.11.18
@@ -10,48 +9,69 @@ package covidvis;
  * @version 2020.11.15
  */
 public class State {
-    private SinglyLinkedList<EthnicityGroup> population;
-    private String stateName;
+	private SinglyLinkedList<EthnicityGroup> population;
+	private String stateName;
 
-    /**
-     * Creates a new State object
-     * 
-     * @param name
-     *            name of State
-     * @param pop
-     *            population of state
-     */
-    public State(String name, SinglyLinkedList<EthnicityGroup> pop) {
-        stateName = name;
-        population = pop;
-    }
+	/**
+	 * Creates a new State object
+	 * 
+	 * @param name name of State
+	 * @param pop  population of state
+	 */
+	public State(String name, SinglyLinkedList<EthnicityGroup> pop) {
+		stateName = name;
+		population = pop;
+	}
 
+	/**
+	 * Returns name of State
+	 * 
+	 * @return name of State
+	 */
+	public String getName() {
+		return stateName;
+	}
 
-    /**
-     * Returns name of State
-     * 
-     * @return
-     *         name of State
-     */
-    public String getName() {
-        return stateName;
-    }
+	/**
+	 * Returns list of ethnicity groups in state
+	 * 
+	 * @return The ethnicity groups of the state.
+	 */
+	public SinglyLinkedList<EthnicityGroup> getList() {
+		return population;
+	}
 
-
-    /**
-     * Returns list of ethnicity groups in state
-     * 
-     * @return The ethnicity groups of the state.
-     */
-    public SinglyLinkedList<EthnicityGroup> getList() {
-        return population;
-    }
-
+	
+	/**
+	 * Turns State's population into a string
+	 */
+	public String toString() {
+		this.sortAlpha();
+		StringBuilder sb = new StringBuilder();
+		sb.append("" + this.getName());
+		sb.append("\n");
+		for (int i = 0; i < population.size(); i++)
+		{
+			sb.append(population.get(i).toString());
+			sb.append("\n");
+		}
+		sb.append("=====");
+		sb.append("\n");
+		this.sortCFR();
+		for (int i = 0; i < population.size(); i++)
+		{
+			sb.append(population.get(i).toString());
+			sb.append("\n");
+		}
+		sb.append("=====");
+		return sb.toString();
+	}
 
     /**
      * Sorts the state's ethnicity groups by CFR with selection sort.
      * 
      * @author Kyle Hart (kylegh)
+     * @author Joshua Sooknanan (Sjoshua9)
      */
     public void sortCFR() {
         /*
