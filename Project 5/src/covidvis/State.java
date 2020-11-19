@@ -5,7 +5,7 @@ package covidvis;
  * population of different ethnicity groups
  * 
  * @author Kyle Hart (kylegh)
- * @version 2020.11.13
+ * @version 2020.11.18
  * @author Joshua Sooknanan Sjoshua9)
  * @version 2020.11.15
  */
@@ -97,7 +97,7 @@ public class State {
         EthnicityGroup largest = current;
         int size = population.size();
 
-        for (int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < size; i++) {
             for (int j = i; j < size; j++) {
                 current = population.get(j); // O(n)
                 // TODO Is this sign in the right direction?
@@ -109,7 +109,7 @@ public class State {
             } // O(n * (3n))
         } // O((n-1) * n * (3n))
           // TODO instantiate default case, or at least specify @precon.
-          // O(3n^3 - 3n^2) at list level. AKA remarkably inefficient.
+          // O(3n^3) at list level. AKA remarkably inefficient.
     }
 
 }
