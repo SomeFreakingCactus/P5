@@ -69,11 +69,20 @@ public class EthnicityGroupTest extends TestCase {
     
     /**
      * tests if the EthnicityGroup has the
-     * same name as another
+     * a name that is alphabetically before the other
      */
-    public void testCompareNameFalse() {
+    public void testCompareNameLess() {
         EthnicityGroup group1 = new EthnicityGroup("black", 12922, 3.7);
-        assertEquals(1, this.group.compareName(group1));
+        assertEquals(-1, this.group.compareName(group1));
+    }
+    
+    /**
+     * tests if the EthnicityGroup has the
+     * a name that is alphabetically after the other
+     */
+    public void testCompareNameGreater() {
+        EthnicityGroup group1 = new EthnicityGroup("white", 12922, 3.7);
+        assertEquals(1, group1.compareName(this.group));
     }
     
     /**
@@ -89,17 +98,26 @@ public class EthnicityGroupTest extends TestCase {
      * tests if the EthnicityGroup has the
      * same cfr as another
      */
-    public void testCompareCfrTrue() {
+    public void testCompareCfrEquals() {
         EthnicityGroup group1 = new EthnicityGroup("asian", 3290, 2.5);
         assertEquals(0, this.group.compareCFR(group1));
     }
     
     /**
      * tests if the EthnicityGroup has the
-     * same cfr as another
+     * smaller cfr as another
      */
-    public void testCompareCfrFalse() {
+    public void testCompareCfrLess() {
         EthnicityGroup group1 = new EthnicityGroup("black", 12922, 3.7);
+        assertEquals(-1, this.group.compareCFR(group1));
+    }
+    
+    /**
+     * tests if the EthnicityGroup has the
+     * larger cfr as another
+     */
+    public void testCompareCfrGreater() {
+        EthnicityGroup group1 = new EthnicityGroup("white", 15000, 1.7);
         assertEquals(1, this.group.compareCFR(group1));
     }
     
