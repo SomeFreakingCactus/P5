@@ -71,10 +71,12 @@ public class EthnicityGroup {
      */
     public int compareCFR(EthnicityGroup largest) {
         if (largest != null) {
+            if (this.cfr > largest.cfr) {
+                return 1;
+            }
             if (this.getCfr() == largest.getCfr()) {
                 return 0;
             }
-            return 1;
         }
         return -1;
     }

@@ -60,23 +60,24 @@ public class State {
          * should get the job done. Maybe we can move the sorting to
          * SinglyLinkedList somehow?
          */
-        EthnicityGroup current = population.get(0);
-        // TODO Should this be largest or smallest?
-        EthnicityGroup largest = current;
+        EthnicityGroup current;
+        EthnicityGroup smallest;
         int size = population.size();
+        int temp;
 
-        for (int i = 0; i < size; i++) {
-            for (int j = i; j < size; j++) {
+        for (int i = size - 1; i >= 0; i--) {
+            smallest = population.get(i);
+            for (int j = i - 1; j >= 0; j--) {
                 current = population.get(j);
-                // TODO Is this sign in the right direction?
-                if (current.toString().compareTo(largest.toString()) > 0) {
-                    largest = current;
+                temp = smallest.compareCFR(current);
+
+                if (temp >= 0) {
+                    smallest = current;
                 }
-                population.remove(largest);
-                population.add(largest);
             }
+            population.remove(smallest);
+            population.add(smallest);
         }
-        // TODO instantiate default case, or at least specify @precon.
     }
 
 
@@ -92,24 +93,24 @@ public class State {
          * should get the job done. Maybe we can move the sorting to
          * SinglyLinkedList somehow?
          */
-        EthnicityGroup current = population.get(0);
-        // TODO Should this be largest or smallest?
-        EthnicityGroup largest = current;
+        EthnicityGroup current;
+        EthnicityGroup smallest;
         int size = population.size();
+        int temp;
 
-        for (int i = 0; i < size; i++) {
-            for (int j = i; j < size; j++) {
-                current = population.get(j); // O(n)
-                // TODO Is this sign in the right direction?
-                if (current.compareCFR(largest) > 0) {
-                    largest = current;
-                } // O(n-1)
-                population.remove(largest); // <=O(n)
-                population.add(largest); // O(1)
-            } // O(n * (3n))
-        } // O((n-1) * n * (3n))
-          // TODO instantiate default case, or at least specify @precon.
-          // O(3n^3) at list level. AKA remarkably inefficient.
+        for (int i = size - 1; i >= 0; i--) {
+            smallest = population.get(i);
+            for (int j = i - 1; j >= 0; j--) {
+                current = population.get(j);
+                temp = smallest.toString().compareTo(current.toString());
+
+                if (temp > 0) {
+                    smallest = current;
+                }
+            }
+            population.remove(smallest);
+            population.add(smallest);
+        }
     }
 
 }
