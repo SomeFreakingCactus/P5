@@ -81,9 +81,8 @@ public class State {
         if (population.size() > 1) {
             for (int j = 0; j < size; j++) {
                 for (int i = 0; i < size - 1; i++) {
-                    int comparison = population.get(i).compareCFR(population
-                        .get(i + 1));
-                    if (comparison < 0) {
+                    if (population.get(i).compareCFR(population.get(i
+                        + 1)) < 0) {
                         EthnicityGroup small = population.get(i + 1);
                         population.add(i, small);
                         population.remove(i + 2);
@@ -105,7 +104,8 @@ public class State {
         if (size > 1) {
             for (int j = 0; j < population.size(); j++) {
                 for (int i = 0; i < size - 1; i++) {
-                    if (population.get(i).compareName(population.get(i + 1)) > 0) {
+                    if (population.get(i).compareName(population.get(i
+                        + 1)) < 0) {
                         EthnicityGroup small = population.get(i + 1);
                         population.add(i, small);
                         population.remove(i + 2);
