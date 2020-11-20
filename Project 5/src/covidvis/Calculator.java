@@ -51,7 +51,7 @@ public class Calculator {
      * @author Kyle Hart (kylegh)
      */
     public void sortAlpha() {
-        for (int i = 1; i < states.length; i++) {
+        for (int i = 0; i < states.length; i++) {
             states[i].sortAlpha();
         }
     }
@@ -63,7 +63,7 @@ public class Calculator {
      * @author Kyle Hart (kylegh)
      */
     public void sortCFR() {
-        for (int i = 1; i < states.length; i++) {
+        for (int i = 0; i < states.length; i++) {
             states[i].sortCFR();
         }
     }

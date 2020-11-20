@@ -4,7 +4,7 @@ package covidvis;
  * Represents each state which holds a population of different ethnicity groups
  * 
  * @author Kyle Hart (kylegh)
- * @version 2020.11.13
+ * @version 2020.11.18
  * @author Joshua Sooknanan Sjoshua9)
  * @version 2020.11.15
  */
@@ -41,45 +41,6 @@ public class State {
 		return population;
 	}
 
-	/**
-	 * Sorts the state's ethnicity groups by CFR with selection sort. 
-	 * @author Kyle Hart (kylegh)
-	 * @author Joshua Sooknanan (Sjoshua9)
-	 */
-	public void sortCFR() {
-		if (population.size() > 1) {
-			for (int j = 0; j < population.size(); j++) {
-				for (int i = 0; i < population.size() - 1; i++) {
-					int comparison = population.get(i).compareCFR(population.get(i + 1));
-					if (comparison < 0) {
-						EthnicityGroup small = population.get(i + 1);
-						population.add(i, small);
-						population.remove(i + 2);
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * Sorts the state's ethnicity groups by name with selection sort.
-	 * 
-	 * @author Kyle Hart (kylegh)
-	 * @author Joshua Sooknanan (Sjoshua9)
-	 */
-	public void sortAlpha() {
-		if (population.size() > 1) {
-			for (int j = 0; j < population.size(); j++) {
-				for (int i = 0; i < population.size() - 1; i++) {
-					if (population.get(i).compareName(population.get(i + 1)) > 0) {
-						EthnicityGroup small = population.get(i + 1);
-						population.add(i, small);
-						population.remove(i + 2);
-					}
-				}
-			}
-		}
-	}
 	
 	/**
 	 * Turns State's population into a string
@@ -106,6 +67,70 @@ public class State {
 		return sb.toString();
 	}
 
-		
+    /**
+     * Sorts the state's ethnicity groups by CFR with selection sort.
+     * 
+     * @author Kyle Hart (kylegh)
+     * @author Joshua Sooknanan (Sjoshua9)
+     */
+    public void sortCFR() {
+        /*
+         * TODO Come up with a better way of sorting this. This is horribly
+         * inefficient and will almost certainly get points taken off. But it
+         * should get the job done. Maybe we can move the sorting to
+         * SinglyLinkedList somehow?
+         */
+        EthnicityGroup current;
+        EthnicityGroup smallest;
+        int size = population.size();
+        int temp;
+
+        for (int i = size - 1; i >= 0; i--) {
+            smallest = population.get(i);
+            for (int j = i - 1; j >= 0; j--) {
+                current = population.get(j);
+                temp = smallest.compareCFR(current);
+
+                if (temp >= 0) {
+                    smallest = current;
+                }
+            }
+            population.remove(smallest);
+            population.add(smallest);
+        }
+    }
+
+
+    /**
+     * Sorts the state's ethnicity groups by name with selection sort.
+     * 
+     * @author Kyle Hart (kylegh)
+     */
+    public void sortAlpha() {
+        /*
+         * TODO Come up with a better way of sorting this. This is horribly
+         * inefficient and will almost certainly get points taken off. But it
+         * should get the job done. Maybe we can move the sorting to
+         * SinglyLinkedList somehow?
+         */
+        EthnicityGroup current;
+        EthnicityGroup smallest;
+        int size = population.size();
+        int temp;
+
+        for (int i = size - 1; i >= 0; i--) {
+            smallest = population.get(i);
+            for (int j = i - 1; j >= 0; j--) {
+                current = population.get(j);
+                temp = smallest.toString().compareTo(current.toString());
+
+                if (temp > 0) {
+                    smallest = current;
+                }
+            }
+            population.remove(smallest);
+            population.add(smallest);
+        }
+    }
 
 }
