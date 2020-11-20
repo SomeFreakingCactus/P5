@@ -24,7 +24,6 @@ public class Calculator {
 
     /**
      * Returns the array of states.
-     * TODO Remove this unnecessary function?
      * 
      * @author Kyle Hart (kylegh)
      */
@@ -38,7 +37,6 @@ public class Calculator {
      * 
      * @author Kyle Hart (kylegh)
      * 
-     *         TODO Should the index start at 0 or 1?
      */
     public State getStateByIndex(int index) {
         return states[index];

@@ -1,8 +1,8 @@
 package covidvis;
 
+import student.TestCase;
 
-
-public class InputReaderTest extends student.TestCase {
+public class InputReaderTest extends TestCase {
 
 	/**
 	 * test InputReader when file exists and is correctly
