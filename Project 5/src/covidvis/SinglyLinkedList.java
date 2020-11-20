@@ -2,13 +2,14 @@ package covidvis;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 /**
  * This is a basic implementation of a linked list
  * 
- * @param <E> 
+ * @param <E>
  */
 public class SinglyLinkedList<E> implements LList<E> {
-    
+
     private Node<E> head;
     private int size;
 
@@ -19,24 +20,32 @@ public class SinglyLinkedList<E> implements LList<E> {
         this.head = null;
         this.size = 0;
     }
-    
+
+
     /**
      * Gets the number of elements in the list
+     * 
      * @return the number of elements
      */
     @Override
     public int size() {
         return this.size;
     }
-    
+
+
     /**
      * Adds the object to the position in the list
+     * 
      * @precondition obj cannot be null
-     * @param index where to add the object
-     * @param obj the object to add
-     * @throws IndexOutOfBoundsException if index is less than zero 
-     * or greater than size
-     * @throws IllegalArgumentException if obj is null
+     * @param index
+     *            where to add the object
+     * @param obj
+     *            the object to add
+     * @throws IndexOutOfBoundsException
+     *             if index is less than zero
+     *             or greater than size
+     * @throws IllegalArgumentException
+     *             if obj is null
      */
     @Override
     public void add(int index, E obj) {
@@ -74,12 +83,16 @@ public class SinglyLinkedList<E> implements LList<E> {
         }
         throw new IllegalArgumentException("Object is null");
     }
-    
+
+
     /**
      * Adds the object to the end of the list.
+     * 
      * @precondition obj cannot be null
-     * @param obj the object to add
-     * @throws IllegalArgumentException if obj is null
+     * @param obj
+     *            the object to add
+     * @throws IllegalArgumentException
+     *             if obj is null
      */
     @Override
     public void add(E obj) {
@@ -100,8 +113,10 @@ public class SinglyLinkedList<E> implements LList<E> {
         throw new IllegalArgumentException("Object is null");
     }
 
+
     /**
      * Checks if the list is empty
+     * 
      * @return true if the list is empty
      */
     @Override
@@ -109,9 +124,12 @@ public class SinglyLinkedList<E> implements LList<E> {
         return (size == 0);
     }
 
+
     /**
      * Removes the first instance of the given object from the list
-     * @param obj the object to remove
+     * 
+     * @param obj
+     *            the object to remove
      * @return true if successful
      */
     @Override
@@ -133,11 +151,15 @@ public class SinglyLinkedList<E> implements LList<E> {
         return false;
     }
 
+
     /**
      * Removes the object at the given position
-     * @param index the position of the object
+     * 
+     * @param index
+     *            the position of the object
      * @return true if the removal was successful
-     * @throws IndexOutOfBoundsException if there is no element at the index
+     * @throws IndexOutOfBoundsException
+     *             if there is no element at the index
      */
     @Override
     public boolean remove(int index) {
@@ -166,12 +188,16 @@ public class SinglyLinkedList<E> implements LList<E> {
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
     }
-    
+
+
     /**
      * Gets the object at the given position
-     * @param index where the object is located
+     * 
+     * @param index
+     *            where the object is located
      * @return The object at the given position
-     * @throws IndexOutOfBoundsException if no node at the given index
+     * @throws IndexOutOfBoundsException
+     *             if no node at the given index
      */
     @Override
     public E get(int index) {
@@ -191,9 +217,12 @@ public class SinglyLinkedList<E> implements LList<E> {
         return data;
     }
 
+
     /**
      * Checks if the list contains the given object
-     * @param obj the object to check for
+     * 
+     * @param obj
+     *            the object to check for
      * @return true if it contains the object
      */
     @Override
@@ -208,6 +237,7 @@ public class SinglyLinkedList<E> implements LList<E> {
         return false;
     }
 
+
     /**
      * Removes all of the elements from the list
      */
@@ -220,9 +250,12 @@ public class SinglyLinkedList<E> implements LList<E> {
         }
     }
 
+
     /**
      * Gets the last time the given object is in the list
-     * @param obj the object to look for
+     * 
+     * @param obj
+     *            the object to look for
      * @return the last position of it. -1 If it is not in the list
      */
     @Override
@@ -239,9 +272,11 @@ public class SinglyLinkedList<E> implements LList<E> {
         }
         return lastIndex;
     }
-    
+
+
     /**
      * String representation of the List
+     * 
      * @return the string representation of the List
      */
     @Override
@@ -258,9 +293,11 @@ public class SinglyLinkedList<E> implements LList<E> {
         result += "}";
         return result;
     }
-    
+
+
     /**
      * Array representation of the List
+     * 
      * @return the array representation of the List
      */
     public Object[] toArray() {
@@ -274,10 +311,12 @@ public class SinglyLinkedList<E> implements LList<E> {
         }
         return array;
     }
-    
+
+
     /**
      * Returns true if both lists have the exact same contents
      * in the exact same order
+     * 
      * @return True or False if the obj equals this
      */
     @Override
@@ -291,8 +330,8 @@ public class SinglyLinkedList<E> implements LList<E> {
                         Node<E> current = this.head;
                         Node<E> otherCurrent = other.head;
                         while (current != null) {
-                            if (!current.getData().equals(
-                                otherCurrent.getData())) {
+                            if (!current.getData().equals(otherCurrent
+                                .getData())) {
                                 return false;
                             }
                             current = current.next();
@@ -307,24 +346,27 @@ public class SinglyLinkedList<E> implements LList<E> {
         return true;
     }
 
+
     public EthnicityGroup getEthnicity(int j) {
         // TODO Auto-generated method stub
         return null;
     }
-    
+
+
     /**
      * Iterator method creates Iterator object
+     * 
      * @return new Iterator object
      */
     public Iterator<E> iterator() {
         return new SinglyLinkedListIterator<E>(this);
     }
-     
+
     /**
      * This represents a iterator in a singly linked list. This node stores data
      * along with having a pointer to the next node in the list
      *
-     * @author  Noah Coyle noahcoyle11
+     * @author Noah Coyle noahcoyle11
      * @version 11/14/2020
      * @param <A>
      */
@@ -332,7 +374,7 @@ public class SinglyLinkedList<E> implements LList<E> {
         private SinglyLinkedList<E> list;
         private Node<E> node;
         private int size;
-        
+
         /**
          * Creates a new SinglyLinkedListIterator
          */
@@ -341,6 +383,7 @@ public class SinglyLinkedList<E> implements LList<E> {
             this.node = null;
             this.size = -1;
         }
+
 
         /**
          * Checks if there are more elements in the list
@@ -355,11 +398,14 @@ public class SinglyLinkedList<E> implements LList<E> {
             return this.node.next != null;
         }
 
+
         /**
          * Gets the next value in the list
+         * 
          * @return the next value
-         * @throws NoSuchElementException if there are 
-         * no nodes left in the list
+         * @throws NoSuchElementException
+         *             if there are
+         *             no nodes left in the list
          */
         @Override
         public E next() {
@@ -378,10 +424,13 @@ public class SinglyLinkedList<E> implements LList<E> {
             }
         }
 
+
         /**
          * Removes the last object returned with next() from the list
-         * @throws IllegalStateException if next has not been called yet
-         * and  if the element has already been removed
+         * 
+         * @throws IllegalStateException
+         *             if next has not been called yet
+         *             and if the element has already been removed
          */
         @Override
         public void remove() {
@@ -397,46 +446,56 @@ public class SinglyLinkedList<E> implements LList<E> {
             this.size--;
         }
     }
-    
+
+
     /**
      * This represents a node in a singly linked list. This node stores data
      * along with having a pointer to the next node in the list
      *
-     * @author  Noah Coyle noahcoyle11
+     * @author Noah Coyle noahcoyle11
      * @version 11/14/2020
      * @param <D>
      */
     public static class Node<D> {
-        
+
         private D data;
         private Node<D> next;
 
         /**
          * Creates a new node with the given data
-         * @param data The data given to the node
+         * 
+         * @param data
+         *            The data given to the node
          */
         public Node(D data) {
             this.data = data;
         }
 
+
         /**
          * Sets the node after this node
-         * @param n The node after this one
+         * 
+         * @param n
+         *            The node after this one
          */
         public void setNext(Node<D> n) {
             this.next = n;
         }
 
+
         /**
          * Gets the next node
+         * 
          * @return the next node
          */
         public Node<D> next() {
             return next;
         }
 
+
         /**
          * Gets the data in the node
+         * 
          * @return the data in the node
          */
         public D getData() {
