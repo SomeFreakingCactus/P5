@@ -28,7 +28,7 @@ public class Calculator {
      * 
      * @author Kyle Hart (kylegh)
      */
-    public State[] States() {
+    public State[] states() {
         return states;
     }
 
