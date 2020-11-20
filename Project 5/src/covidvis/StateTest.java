@@ -1,66 +1,105 @@
+
 package covidvis;
 
-import student.TestCase;
-
 /**
- * Tests State.
+ * Test class for State class
  * 
- * @author Kyle Hart (kylegh
+ * @author Joshua Sooknanan
  * @version 2020.11.18
+ *
  */
-public class StateTest extends TestCase {
-
+public class StateTest extends student.TestCase {
     private State state;
-    private SinglyLinkedList<EthnicityGroup> list;
+    private SinglyLinkedList<EthnicityGroup> pop;
+    private EthnicityGroup white;
+    private EthnicityGroup black;
+    private EthnicityGroup asian;
 
     /**
-     * Called before each test case.
+     * Set up thats is ran prior to every test
      */
     public void setUp() {
-        list = new SinglyLinkedList<EthnicityGroup>();
-
-        list.add(new EthnicityGroup("1", 5, 25));
-        list.add(new EthnicityGroup("2", 10, 25));
-        list.add(new EthnicityGroup("3", 10, 20));
-        list.add(new EthnicityGroup("4", 15, 30));
-        list.add(new EthnicityGroup("5", 18, 20));
-
-        state = new State("test", list);
-
+        white = new EthnicityGroup("White", 3000, 0.4);
+        black = new EthnicityGroup("Black", 4000, 0.3);
+        asian = new EthnicityGroup("Asian", 5000, 0.2);
+        pop = new SinglyLinkedList<EthnicityGroup>();
+        pop.add(asian);
+        pop.add(white);
+        pop.add(black);
+        state = new State("VA", pop);
     }
 
 
     /**
-     * Tests the get methods.
+     * test getName
      */
-    public void testGet() {
-        assertEquals("test", state.getName());
-        assertEquals(list, state.getList());
+    public void testGetName() {
+        assertEquals("VA", state.getName());
     }
 
 
     /**
-     * Tests sortCFR.
+     * test getList
      */
-    public void testSortCFR() {
+    public void testGetList() {
+        assertEquals(pop, state.getList());
+    }
+
+
+    /**
+     * test sortCFR when population is greater than 1
+     */
+    public void testSortCFRT() {
         state.sortCFR();
-
-        assertEquals(state.getList().toString(),
-            "{3: 10 cases, 20.0% CFR, 5: 18 cases, 20.0% CFR, 1: 5 cases, "
-                + "25.0% CFR, 2: 10 cases, 25.0% CFR, 4: 15 cases, 30.0% CFR}");
+        assertEquals(white, state.getList().get(0));
     }
 
 
     /**
-     * Tests sortAlpha.
+     * test sortCFR when population is only 1
+     */
+    public void testSortCFR1() {
+        SinglyLinkedList<EthnicityGroup> pop2 =
+            new SinglyLinkedList<EthnicityGroup>();
+        pop2.add(black);
+        State state2 = new State("NE", pop2);
+        state2.sortCFR();
+        assertEquals(black, state2.getList().get(0));
+    }
+
+
+    /**
+     * test sortAlpha when population is greater than 1
+     */
+    public void testSortAlphaT() {
+        state.sortAlpha();
+        assertEquals(asian, state.getList().get(0));
+    }
+
+
+    /**
+     * test sortAlpha when population is only 1
      */
     public void testSortAlpha() {
-        state.sortAlpha();
-
-        assertEquals(state.getList().toString(),
-            "{1: 5 cases, 25.0% CFR, 2: 10 cases, 25.0% CFR, 3: 10 cases, "
-                + "20.0% CFR, 4: 15 cases, 30.0% CFR, 5: 18 cases, 20.0% CFR}");
+        SinglyLinkedList<EthnicityGroup> pop2 =
+            new SinglyLinkedList<EthnicityGroup>();
+        pop2.add(black);
+        State state2 = new State("NE", pop2);
+        state2.sortAlpha();
+        assertEquals(black, state2.getList().get(0));
     }
 
-    // TODO Add state equals methods.
+
+    /**
+     * test ToString checking formatting
+     */
+    public void testToString() {
+        assertEquals("VA" + "\n" + "Asian: 5000 cases, 0.2% CFR" + "\n"
+            + "Black: 4000 cases, 0.3% CFR" + "\n"
+            + "White: 3000 cases, 0.4% CFR" + "\n" + "=====" + "\n"
+            + "White: 3000 cases, 0.4% CFR" + "\n"
+            + "Black: 4000 cases, 0.3% CFR" + "\n"
+            + "Asian: 5000 cases, 0.2% CFR" + "\n" + "=====", state.toString());
+    }
+
 }

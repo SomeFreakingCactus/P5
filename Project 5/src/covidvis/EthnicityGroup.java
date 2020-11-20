@@ -51,6 +51,7 @@ public class EthnicityGroup {
 
     /**
      * Compares two groups names
+     * 
      * @param group The group being compared
      * @return if the groups have the same name
      */
@@ -59,7 +60,11 @@ public class EthnicityGroup {
             if (this.getName().equalsIgnoreCase(group.getName())) {
                 return 0;
             }
-            return 1;
+            int result = this.getName().compareTo(group.getName());
+            if (result > 0)
+            {
+                return 1;
+            }
         }
         return -1;
     }
