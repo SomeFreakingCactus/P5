@@ -74,22 +74,22 @@ public class State {
      * Sorts the state's ethnicity groups by CFR with selection sort.
      * 
      * @author Kyle Hart (kylegh)
+     * @author Joshua Sooknanan (Sjoshua9)
      */
     public void sortCFR() {
-        EthnicityGroup current;
-        EthnicityGroup smallest;
-
-        for (int i = population.size() - 1; i >= 0; i--) {
-            smallest = population.get(i);
-            for (int j = i - 1; j >= 0; j--) {
-                current = population.get(j);
-
-                if (smallest.compareCFR(current) >= 0) {
-                    smallest = current;
+        int size = population.size();
+        if (population.size() > 1) {
+            for (int j = 0; j < size; j++) {
+                for (int i = 0; i < size - 1; i++) {
+                    int comparison = population.get(i).compareCFR(population
+                        .get(i + 1));
+                    if (comparison < 0) {
+                        EthnicityGroup small = population.get(i + 1);
+                        population.add(i, small);
+                        population.remove(i + 2);
+                    }
                 }
             }
-            population.remove(smallest);
-            population.add(smallest);
         }
     }
 
@@ -98,22 +98,20 @@ public class State {
      * Sorts the state's ethnicity groups by name with selection sort.
      * 
      * @author Kyle Hart (kylegh)
+     * @author Joshua Sooknanan (Sjoshua9)
      */
     public void sortAlpha() {
-        EthnicityGroup current;
-        EthnicityGroup smallest;
-
-        for (int i = population.size() - 1; i >= 0; i--) {
-            smallest = population.get(i);
-            for (int j = i - 1; j >= 0; j--) {
-                current = population.get(j);
-
-                if (smallest.toString().compareTo(current.toString()) > 0) {
-                    smallest = current;
+        int size = population.size();
+        if (size > 1) {
+            for (int j = 0; j < population.size(); j++) {
+                for (int i = 0; i < size - 1; i++) {
+                    if (population.get(i).compareName(population.get(i + 1)) > 0) {
+                        EthnicityGroup small = population.get(i + 1);
+                        population.add(i, small);
+                        population.remove(i + 2);
+                    }
                 }
             }
-            population.remove(smallest);
-            population.add(smallest);
         }
     }
 

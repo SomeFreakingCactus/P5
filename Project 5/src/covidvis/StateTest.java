@@ -73,6 +73,7 @@ public class StateTest extends student.TestCase {
      */
     public void testSortAlphaT() {
         state.sortAlpha();
+        System.out.println(state);
         assertEquals(asian, state.getList().get(0));
     }
 
