@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 /**
  * This is a basic implementation of a linked list
  * 
- * @param <E>
+ * @param <E> 
  */
 public class SinglyLinkedList<E> implements LList<E> {
     

@@ -84,14 +84,14 @@ public class State {
                     if (population.get(i).compareCFR(population.get(i
                         + 1)) < 0) {
                         EthnicityGroup small = population.get(i + 1);
+                        population.remove(i + 1);
                         population.add(i, small);
-                        population.remove(i + 2);
                     }
                 }
             }
         }
     }
-
+    
 
     /**
      * Sorts the state's ethnicity groups by name with selection sort.
@@ -107,8 +107,8 @@ public class State {
                     if (population.get(i).compareName(population.get(i
                         + 1)) < 0) {
                         EthnicityGroup small = population.get(i + 1);
+                        population.remove(i + 1);
                         population.add(i, small);
-                        population.remove(i + 2);
                     }
                 }
             }
