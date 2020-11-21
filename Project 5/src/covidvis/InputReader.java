@@ -5,6 +5,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 
+/**
+ * Reads and parses input
+ * @author Joshua Sooknanan
+ * @version 2020.11.18
+ *
+ */
 public class InputReader {
 	private State[] states;
 
@@ -58,11 +64,27 @@ public class InputReader {
 			double cfrLat = (deathLat / ((double)casesLat)) * 100;
 			double cfrAsi = (deathAsi / ((double)casesAsi)) * 100;
 			double cfrOth = (deathOth / ((double)casesOth)) * 100;
+			
+			if (deathWh == -1) {
+				cfrWh = -1;
+			}
+			if (deathBl == -1) {
+				cfrBl = -1;
+			}
+			if (deathLat == -1) {
+				cfrLat = -1;
+			}
+			if (deathAsi == -1) {
+				cfrAsi = -1;
+			}
+			if (deathOth == -1) {
+				cfrOth = -1;
+			}
 
 			// creating state object
 			EthnicityGroup white = new EthnicityGroup("White", casesWh, cfrWh);
 			EthnicityGroup black = new EthnicityGroup("Black", casesBl, cfrBl);
-			EthnicityGroup latin = new EthnicityGroup("Latin", casesLat, cfrLat);
+			EthnicityGroup latin = new EthnicityGroup("Latinx", casesLat, cfrLat);
 			EthnicityGroup asian = new EthnicityGroup("Asian", casesAsi, cfrAsi);
 			EthnicityGroup other = new EthnicityGroup("Other", casesOth, cfrOth);
 			SinglyLinkedList<EthnicityGroup> pop = new SinglyLinkedList<EthnicityGroup>();
@@ -79,5 +101,15 @@ public class InputReader {
 		}
 		return states;
 
+	}
+	
+	/**
+	 * Get array of States
+	 * @return
+	 * 		Array of States
+	 */
+	public State[] getStates()
+	{
+		return states;
 	}
 }

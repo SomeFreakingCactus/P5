@@ -1,4 +1,5 @@
 package covidvis;
+import java.text.*;
 
 /**
  *  EthnicityGroup class represents a EthnicityGroup
@@ -91,7 +92,13 @@ public class EthnicityGroup {
      * @return the string representation of the EthnicityGroup
      */
     public String toString() {
+    	DecimalFormat df = new DecimalFormat("#.#");
+    	if (this.getCfr() > 0 && this.getCfr() < 100) {
         return this.getName() + ": " + this.getTotalCases() 
-            + " cases, " + this.getCfr() + "% CFR";
+            + " cases, " + df.format(this.getCfr()) + "% CFR";
+    	}
+    	return this.getName() + ": " + this.getTotalCases() 
+        + " cases, " + -1 + "% CFR";
+    	
     }
 }

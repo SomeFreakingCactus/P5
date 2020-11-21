@@ -129,6 +129,14 @@ public class EthnicityGroupTest extends TestCase {
     }
     
     /**
+     * tests toString method when CFR is negative (NA)
+     */
+    public void testToStringNA() {
+    	EthnicityGroup group1 = new EthnicityGroup("white", 15000, -1.7);
+        assertEquals("white: 15000 cases, -1% CFR", group1.toString());
+    }
+    
+    /**
      * tests getting the EthnicityGroup toString
      */
     public void testToString2() {

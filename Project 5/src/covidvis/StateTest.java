@@ -66,6 +66,26 @@ public class StateTest extends student.TestCase {
         state2.sortCFR();
         assertEquals(black, state2.getList().get(0));
     }
+    
+    /**
+     * test sortCFR when population when 2 groups have the same CFR
+     */
+    public void testSortCFR2() {
+    	white = new EthnicityGroup("White", 3000, 0.4);
+        EthnicityGroup other =
+        		new EthnicityGroup("Other", 3000, 0.2);
+        SinglyLinkedList pop2 =
+        		new SinglyLinkedList<EthnicityGroup>();
+        pop2.add(asian);
+        pop2.add(white);
+        pop2.add(black);
+        pop2.add(other);
+        State state2 = new State("VA", pop2);
+        state2.sortCFR();
+        assertEquals(asian, state2.getList().get(2));
+        assertEquals(other, state2.getList().get(3));
+        
+    }
 
 
     /**
