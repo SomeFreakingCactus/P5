@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 /**
  * This is a basic implementation of a linked list
  * 
+ * @author Noah Coyle (noahcoyle11)
+ * @version 11/14/2020
  * @param <E>
  */
 public class SinglyLinkedList<E> implements LList<E> {
