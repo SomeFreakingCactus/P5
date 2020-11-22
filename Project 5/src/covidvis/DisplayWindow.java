@@ -1,5 +1,10 @@
 package covidvis;
-
+/**
+ * DisplayWindow
+ * 
+ * @author none
+ * @version none
+ */
 public class DisplayWindow {
 
     /**

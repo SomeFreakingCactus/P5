@@ -46,6 +46,7 @@ public class State {
 
     /**
      * Turns State's population into a string
+     * @return The State in a string
      */
     public String toString() {
         this.sortAlpha();
