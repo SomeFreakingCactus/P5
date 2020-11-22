@@ -14,7 +14,7 @@ import java.text.ParseException;
 public class InputReader {
 	private State[] states;
 
-	public InputReader(String covidFile) throws FileNotFoundException, ParseException {
+	public InputReader(String covidFile) throws FileNotFoundException {
 		this.readFile(covidFile);
 	}
 
@@ -29,7 +29,7 @@ public class InputReader {
 	 * @throws ParseException
 	 * 		throws when not enough attributes in line
 	 */
-	private State[] readFile(String fileName) throws FileNotFoundException, ParseException {
+	private State[] readFile(String fileName) throws FileNotFoundException {
 		states = new State[6];
 		Scanner file = new Scanner(new File(fileName));
 		int index = 0;
@@ -40,11 +40,6 @@ public class InputReader {
 			String line = file.nextLine();
 			line = line.replace("NA", "-1");
 			String[] lineArray = line.split(",");
-
-			if (lineArray.length != 11) {
-				throw new ParseException(line, lineArray.length);
-			}
-			// parsing
 			String stateName = lineArray[0];
 			int casesWh = Integer.parseInt(lineArray[1]);
 			int casesBl = Integer.parseInt(lineArray[2]);

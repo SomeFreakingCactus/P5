@@ -25,7 +25,7 @@ public class Input {
      * @throws ParseException 
      * @throws FileNotFoundException 
      */
-    public static void main(String[] args) throws FileNotFoundException, ParseException {
+    public static void main(String[] args) throws FileNotFoundException {
     	String file1 = "";
         file1 = args[0];
         InputReader reader = new InputReader(file1);

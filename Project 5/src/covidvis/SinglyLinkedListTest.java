@@ -20,6 +20,7 @@ public class SinglyLinkedListTest extends TestCase {
     private SinglyLinkedList<String> emptyListB;
     private SinglyLinkedList<String> bigListA;
     private SinglyLinkedList<String> bigListB;
+    private String nullObject;
     private SinglyLinkedList<String> list;
 
 
@@ -50,6 +51,7 @@ public class SinglyLinkedListTest extends TestCase {
         for (int i = 0; i < 100; i++) {
             bigListB.add("sport" + i);
         }
+        nullObject = null;
         list = new SinglyLinkedList<String>();
     }
     
@@ -407,6 +409,8 @@ public class SinglyLinkedListTest extends TestCase {
     public void testEqualsEmptyList() {
         assertEquals(emptyListA, emptyListA);
         assertEquals(emptyListA, emptyListB);
+        assertFalse(bigListA.equals(nullObject));
+        assertFalse(bigListA.equals("soccer"));
         assertFalse(emptyListA.equals(smallListA));
         assertFalse(smallListA.equals(emptyListA));
         emptyListB.add("jump roping");
@@ -422,6 +426,8 @@ public class SinglyLinkedListTest extends TestCase {
     public void testEqualsSmallList() {
         assertEquals(smallListA, smallListA);
         assertEquals(smallListA, smallListB);
+        assertFalse(bigListA.equals(nullObject));
+        assertFalse(bigListA.equals("soccer"));
         assertFalse(smallListA.equals(bigListA));
         assertFalse(smallListA.equals(emptyListA));
         smallListB.add("jump roping");
@@ -440,6 +446,8 @@ public class SinglyLinkedListTest extends TestCase {
     public void testEqualsBigList() {
         assertEquals(bigListA, bigListA);
         assertEquals(bigListA, bigListB);
+        assertFalse(bigListA.equals(nullObject));
+        assertFalse(bigListA.equals("soccer"));
         assertFalse(bigListA.equals(smallListA));
         assertFalse(bigListA.equals(emptyListA));
         bigListB.add("jump roping");
