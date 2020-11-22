@@ -62,7 +62,6 @@ public class EthnicityGroup {
                 return 0;
             }
             int result = this.getName().compareTo(group.getName());
-            System.out.println(result);
             if (result > 0)
             {
                 return 1;
