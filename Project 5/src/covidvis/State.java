@@ -84,6 +84,7 @@ public class State {
                         + 1)) == 0) {
                         if (population.get(i).compareName(population.get(i
                             + 1)) > 0) {
+                            System.out.println("Test");
                             EthnicityGroup small = population.get(i + 1);
                             population.remove(i + 1);
                             population.add(i, small);

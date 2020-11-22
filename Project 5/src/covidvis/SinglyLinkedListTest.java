@@ -519,6 +519,20 @@ public class SinglyLinkedListTest extends TestCase {
     }
     
     /**
+     * Tests iterator has next
+     */
+    public void testIteratorHasNextNull() {
+        this.list.add("A");
+        this.list.add("B");
+        Iterator<String> iter = this.list.iterator();
+        assertEquals(true, iter.hasNext());
+        iter.next();
+        assertEquals(true, iter.hasNext());
+        iter.next();
+        assertEquals(false, iter.hasNext());
+    }
+    
+    /**
      * Tests iterator next
      */
     public void testIteratorNext() {
