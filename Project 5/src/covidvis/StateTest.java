@@ -71,10 +71,10 @@ public class StateTest extends student.TestCase {
      * test sortCFR when population when 2 groups have the same CFR
      */
     public void testSortCFR2() {
-    	white = new EthnicityGroup("White", 3000, 0.4);
+        white = new EthnicityGroup("White", 3000, 0.4);
         EthnicityGroup other =
         		new EthnicityGroup("Other", 3000, 0.2);
-        SinglyLinkedList pop2 =
+        SinglyLinkedList<EthnicityGroup> pop2 =
         		new SinglyLinkedList<EthnicityGroup>();
         pop2.add(asian);
         pop2.add(white);

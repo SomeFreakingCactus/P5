@@ -40,11 +40,13 @@ public class Input2020FReferenceTest extends student.TestCase {
         + "Cases_and_Deaths_by_race_CRDT_Sep2020.csv")
     public void testMain01() throws java.io.IOException, ParseException {
 
-        Input.main(new String[] { "Cases_and_Deaths_by_race_CRDT_Sep2020.csv" });
+        Input.main(new String[] { 
+            "Cases_and_Deaths_by_race_CRDT_Sep2020.csv" 
+            });
 
         fileName = "CovidOutput_1.txt";
 
-        String covidOutput_1 = "";
+        String covidOutput1 = "";
         fileData = null;
         try {
             // Can throw FileNotFoundException
@@ -56,12 +58,12 @@ public class Input2020FReferenceTest extends student.TestCase {
         }
 
         while (fileData.hasNextLine()) {
-            covidOutput_1 += fileData.nextLine() + "\n";
+            covidOutput1 += fileData.nextLine() + "\n";
         }
 
         assertFuzzyEquals("Output not as expected for input file "
             + "Cases_and_Deaths_by_race_CRDT_Sep2020.csv",
-            covidOutput_1, systemOut().getHistory());
+            covidOutput1, systemOut().getHistory());
 
     }
 
@@ -78,11 +80,13 @@ public class Input2020FReferenceTest extends student.TestCase {
         + "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv")
     public void testMain02() throws java.io.IOException, ParseException {
 
-        Input.main(new String[] { "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv"});
+        Input.main(new String[] { 
+            "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv"
+            });
 
         fileName = "CovidOutput_2.txt";
 
-        String covidOutput_2 = "";
+        String covidOutput2 = "";
         fileData = null;
         try {
             // Can throw FileNotFoundException
@@ -94,12 +98,12 @@ public class Input2020FReferenceTest extends student.TestCase {
         }
 
         while (fileData.hasNextLine()) {
-            covidOutput_2 += fileData.nextLine() + "\n";
+            covidOutput2 += fileData.nextLine() + "\n";
         }
 
         assertFuzzyEquals("Output not as expected for input file "
-            + "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv", covidOutput_2, systemOut()
-                .getHistory());
+            + "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv", covidOutput2
+            , systemOut().getHistory());
 
     }
 

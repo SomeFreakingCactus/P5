@@ -26,6 +26,7 @@ public class Calculator {
      * Returns the array of states.
      * 
      * @author Kyle Hart (kylegh)
+     * @return List of States
      */
     public State[] states() {
         return states;
@@ -36,7 +37,7 @@ public class Calculator {
      * Returns the state at the given index.
      * 
      * @author Kyle Hart (kylegh)
-     * 
+     * @return Specific state
      */
     public State getStateByIndex(int index) {
         return states[index];

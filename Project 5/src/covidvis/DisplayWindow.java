@@ -2,8 +2,11 @@ package covidvis;
 
 public class DisplayWindow {
 
+    /**
+     * Display Window
+     */
     public DisplayWindow() {
-        // TODO Auto-generated constructor stub
+        //Nothing done yet
     }
 
 }

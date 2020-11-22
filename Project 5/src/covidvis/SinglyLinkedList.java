@@ -348,13 +348,6 @@ public class SinglyLinkedList<E> implements LList<E> {
         return true;
     }
 
-
-    public EthnicityGroup getEthnicity(int j) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     /**
      * Iterator method creates Iterator object
      * 
