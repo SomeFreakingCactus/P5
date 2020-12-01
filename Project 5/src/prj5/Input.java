@@ -1,8 +1,6 @@
 package prj5;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.text.ParseException;
 import covidvis.Calculator;
 import covidvis.GUIWindow;
