@@ -6,7 +6,6 @@ package covidvis;
  * 
  * @author Joshua Sooknanan
  * @version 2020.11.18
- *
  */
 public class StateTest extends student.TestCase {
     private State state;
@@ -86,7 +85,8 @@ public class StateTest extends student.TestCase {
         assertEquals(other, state2.getList().get(3));
 
     }
-    
+
+
     /**
      * test sortCFR when population when 2 groups have different CFR
      */

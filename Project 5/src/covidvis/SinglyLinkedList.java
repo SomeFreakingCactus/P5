@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
  * @author Noah Coyle (noahcoyle11)
  * @version 11/14/2020
  * @param <E>
+ *            The data type contained.
  */
 public class SinglyLinkedList<E> implements LList<E> {
 
@@ -348,6 +349,7 @@ public class SinglyLinkedList<E> implements LList<E> {
         return true;
     }
 
+
     /**
      * Iterator method creates Iterator object
      * 
@@ -363,7 +365,8 @@ public class SinglyLinkedList<E> implements LList<E> {
      *
      * @author Noah Coyle noahcoyle11
      * @version 11/14/2020
-     * @param <A>
+     * @param <E>
+     *            The data type contained.
      */
     private class SinglyLinkedListIterator<A> implements Iterator<E> {
         private SinglyLinkedList<E> list;
@@ -450,6 +453,7 @@ public class SinglyLinkedList<E> implements LList<E> {
      * @author Noah Coyle noahcoyle11
      * @version 11/14/2020
      * @param <D>
+     *            The data type contained.
      */
     public static class Node<D> {
 

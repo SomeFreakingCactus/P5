@@ -35,7 +35,9 @@ public class Calculator {
 
     /**
      * Returns the state at the given index.
-     * @param index The index for the State
+     * 
+     * @param index
+     *            The index for the State
      * 
      * @author Kyle Hart (kylegh)
      * @return Specific state
