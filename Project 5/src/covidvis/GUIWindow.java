@@ -27,24 +27,24 @@ public class GUIWindow {
      * GUI Window
      */
     public GUIWindow(Calculator calculator) {
-        //Setup
+        // Setup
         this.calc = calculator;
         this.window = new Window();
         this.stateButtons = new Button[6];
-        
-        //Alpha Button
+
+        // Alpha Button
         this.alpha = new Button("Sort by Alpha");
         this.window.addButton(this.alpha, WindowSide.NORTH);
         this.alpha.onClick(this, "clickedAlpha");
-        //Quit Button
+        // Quit Button
         this.quit = new Button("Quit");
         this.window.addButton(this.quit, WindowSide.NORTH);
         this.quit.onClick(this, "clickedQuit");
-        //CFR Button
+        // CFR Button
         this.cfr = new Button("Sort by CFR");
         this.window.addButton(this.cfr, WindowSide.NORTH);
         this.cfr.onClick(this, "clickedCfr");
-        //States Buttons
+        // States Buttons
         int counter = 0;
         for (State state : this.calc.states()) {
             Button stateName = new Button("Represent " + state.getName());
@@ -53,27 +53,33 @@ public class GUIWindow {
             stateName.onClick(this, "clickedState");
             counter = counter + 1;
         }
-        
-        ///Default Desplay
+
+        /// Default Desplay
         this.displayState(0);
     }
 
+
     /**
      * Click method for quit button
-     * @param button The button clicked
+     * 
+     * @param button
+     *            The button clicked
      */
     public void clickedQuit(Button button) {
         System.exit(0);
     }
 
+
     /**
-     * Click method for alpah sort button
-     * @param button The alpha sort button clicked
+     * Click method for alpha sort button.
+     * 
+     * @param button
+     *            The alpha sort button clicked
      */
     public void clickedAlpha(Button alpha) {
         Iterator<Shape> iter = this.window.getShapesIterator();
-        String currentTitle = ((TextShape)iter.next()).getText()
-            .replaceAll(" Case Fatality Ratios by Race", "");
+        String currentTitle = ((TextShape)iter.next()).getText().replaceAll(
+            " Case Fatality Ratios by Race", "");
         State state = null;
         for (int i = 0; i < this.stateButtons.length; i++) {
             State stateName = calc.getStateByIndex(i);
@@ -85,24 +91,27 @@ public class GUIWindow {
         this.window.removeAllShapes();
         state.sortAlpha();
         SinglyLinkedList<EthnicityGroup> list = state.getList();
-        int x = (this.window.getWidth()-126) / 5;
+        int x = (this.window.getWidth() - 126) / 5;
         int y = this.window.getHeight() / 4;
-        TextShape stateName = new TextShape((x * 2)+10, y-80, state.getName()
-            + " Case Fatality Ratios by Race");
+        TextShape stateName = new TextShape((x * 2) + 10, y - 80, state
+            .getName() + " Case Fatality Ratios by Race");
         this.window.addShape(stateName);
         for (int i = 0; i < list.size(); i++) {
-            displayBar(list.get(i), i+1);
+            displayBar(list.get(i), i + 1);
         }
     }
 
+
     /**
      * Click method for cfr sort button
-     * @param button The cfr sort clicked
+     * 
+     * @param button
+     *            The cfr sort clicked
      */
     public void clickedCfr(Button cfr) {
         Iterator<Shape> iter = this.window.getShapesIterator();
-        String currentTitle = ((TextShape)iter.next()).getText()
-            .replaceAll(" Case Fatality Ratios by Race", "");
+        String currentTitle = ((TextShape)iter.next()).getText().replaceAll(
+            " Case Fatality Ratios by Race", "");
         State state = null;
         for (int i = 0; i < this.stateButtons.length; i++) {
             State stateName = calc.getStateByIndex(i);
@@ -114,19 +123,22 @@ public class GUIWindow {
         this.window.removeAllShapes();
         state.sortCFR();
         SinglyLinkedList<EthnicityGroup> list = state.getList();
-        int x = (this.window.getWidth()-126) / 5;
+        int x = (this.window.getWidth() - 126) / 5;
         int y = this.window.getHeight() / 4;
-        TextShape stateName = new TextShape((x * 2)+10, y-80, state.getName()
-            + " Case Fatality Ratios by Race");
+        TextShape stateName = new TextShape((x * 2) + 10, y - 80, state
+            .getName() + " Case Fatality Ratios by Race");
         this.window.addShape(stateName);
         for (int i = 0; i < list.size(); i++) {
-            displayBar(list.get(i), i+1);
+            displayBar(list.get(i), i + 1);
         }
     }
-    
+
+
     /**
      * Click method for state button
-     * @param button The state button clicked
+     * 
+     * @param button
+     *            The state button clicked
      */
     public void clickedState(Button state) {
         this.window.removeAllShapes();
@@ -139,46 +151,54 @@ public class GUIWindow {
         }
     }
 
+
     /**
      * Display method for a state
-     * @param index The index of the state
+     * 
+     * @param index
+     *            The index of the state
      */
     private void displayState(int index) {
         State state = calc.getStateByIndex(index);
         SinglyLinkedList<EthnicityGroup> list = state.getList();
-        int x = (this.window.getWidth()-126) / 5;
+        int x = (this.window.getWidth() - 126) / 5;
         int y = this.window.getHeight() / 4;
-        TextShape stateName = new TextShape((x * 2)+10, y-80, state.getName()
-            + " Case Fatality Ratios by Race");
+        TextShape stateName = new TextShape((x * 2) + 10, y - 80, state
+            .getName() + " Case Fatality Ratios by Race");
         this.window.addShape(stateName);
         for (int i = 0; i < list.size(); i++) {
-            displayBar(list.get(i), i+1);
+            displayBar(list.get(i), i + 1);
         }
     }
 
+
     /**
      * Display method for each ethnic group
-     * @param group The ethnic group
-     * @param index The index of the ethnic group
+     * 
+     * @param group
+     *            The ethnic group
+     * @param index
+     *            The index of the ethnic group
      */
     private void displayBar(EthnicityGroup group, int index) {
-        int x = (this.window.getWidth()-126) / 5;
+        int x = (this.window.getWidth() - 126) / 5;
         int y = this.window.getHeight() / 4;
         int width = 20;
-        int percent = (int)(group.getCfr()*10);
-        TextShape groupName = new TextShape((x * index)-10, y+120, 
-            group.getName());
+        int percent = (int)(group.getCfr() * 10);
+        TextShape groupName = new TextShape((x * index) - 10, y + 120, group
+            .getName());
         this.window.addShape(groupName);
         if (percent > -1) {
-            Shape groupBar = new Shape(x * index, (y+110)-percent, width, 
-                percent, new Color(0,0,255));
+            Shape groupBar = new Shape(x * index, (y + 110) - percent, width,
+                percent, Color.BLUE);
             this.window.addShape(groupBar);
             DecimalFormat formatter = new DecimalFormat("###.#");
-            TextShape groupCFR = new TextShape((x * index)-4, y+140, 
+            TextShape groupCFR = new TextShape((x * index) - 4, y + 140,
                 formatter.format(group.getCfr()) + "%");
             this.window.addShape(groupCFR);
-        } else {
-            TextShape groupBar = new TextShape(x * index, (y+90)-percent, 
+        }
+        else {
+            TextShape groupBar = new TextShape(x * index, (y + 90) - percent,
                 "NA", Color.BLACK);
             this.window.addShape(groupBar);
         }
