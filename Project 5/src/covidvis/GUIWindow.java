@@ -25,6 +25,7 @@ public class GUIWindow {
 
     /**
      * GUI Window
+     * @param calculator The Calculator being used
      */
     public GUIWindow(Calculator calculator) {
         // Setup
