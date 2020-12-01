@@ -179,7 +179,7 @@ public class GUIWindow {
             this.window.addShape(groupCFR);
         } else {
             TextShape groupBar = new TextShape(x * index, (y+90)-percent, 
-                "NA", new Color(0,0,255));
+                "NA", Color.BLACK);
             this.window.addShape(groupBar);
         }
     }
