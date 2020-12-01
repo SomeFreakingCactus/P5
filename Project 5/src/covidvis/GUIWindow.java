@@ -2,6 +2,7 @@ package covidvis;
 
 import java.awt.Color;
 import java.text.DecimalFormat;
+import java.util.Iterator;
 import cs2.Button;
 import cs2.Shape;
 import cs2.TextShape;
@@ -57,8 +58,6 @@ public class GUIWindow {
         this.displayState(0);
     }
 
-    // TODO Figure out a way to implement clickedState without an int parameter.
-
     /**
      * Click method for quit button
      * @param button The button clicked
@@ -72,7 +71,28 @@ public class GUIWindow {
      * @param button The alpha sort button clicked
      */
     public void clickedAlpha(Button alpha) {
-        // TODO
+        Iterator<Shape> iter = this.window.getShapesIterator();
+        String currentTitle = ((TextShape)iter.next()).getText()
+            .replaceAll(" Case Fatality Ratios by Race", "");
+        State state = null;
+        for (int i = 0; i < this.stateButtons.length; i++) {
+            State stateName = calc.getStateByIndex(i);
+            String buttonTitle = currentTitle;
+            if (buttonTitle.equals(stateName.getName())) {
+                state = calc.getStateByIndex(i);
+            }
+        }
+        this.window.removeAllShapes();
+        state.sortAlpha();
+        SinglyLinkedList<EthnicityGroup> list = state.getList();
+        int x = (this.window.getWidth()-126) / 5;
+        int y = this.window.getHeight() / 4;
+        TextShape stateName = new TextShape((x * 2)+10, y-80, state.getName()
+            + " Case Fatality Ratios by Race");
+        this.window.addShape(stateName);
+        for (int i = 0; i < list.size(); i++) {
+            displayBar(list.get(i), i+1);
+        }
     }
 
     /**
@@ -80,7 +100,28 @@ public class GUIWindow {
      * @param button The cfr sort clicked
      */
     public void clickedCfr(Button cfr) {
-        // TODO
+        Iterator<Shape> iter = this.window.getShapesIterator();
+        String currentTitle = ((TextShape)iter.next()).getText()
+            .replaceAll(" Case Fatality Ratios by Race", "");
+        State state = null;
+        for (int i = 0; i < this.stateButtons.length; i++) {
+            State stateName = calc.getStateByIndex(i);
+            String buttonTitle = currentTitle;
+            if (buttonTitle.equals(stateName.getName())) {
+                state = calc.getStateByIndex(i);
+            }
+        }
+        this.window.removeAllShapes();
+        state.sortCFR();
+        SinglyLinkedList<EthnicityGroup> list = state.getList();
+        int x = (this.window.getWidth()-126) / 5;
+        int y = this.window.getHeight() / 4;
+        TextShape stateName = new TextShape((x * 2)+10, y-80, state.getName()
+            + " Case Fatality Ratios by Race");
+        this.window.addShape(stateName);
+        for (int i = 0; i < list.size(); i++) {
+            displayBar(list.get(i), i+1);
+        }
     }
     
     /**
@@ -107,7 +148,7 @@ public class GUIWindow {
         SinglyLinkedList<EthnicityGroup> list = state.getList();
         int x = (this.window.getWidth()-126) / 5;
         int y = this.window.getHeight() / 4;
-        TextShape stateName = new TextShape((x * 2)+10, y-80, state.getName() 
+        TextShape stateName = new TextShape((x * 2)+10, y-80, state.getName()
             + " Case Fatality Ratios by Race");
         this.window.addShape(stateName);
         for (int i = 0; i < list.size(); i++) {
@@ -126,16 +167,20 @@ public class GUIWindow {
         int width = 20;
         int percent = (int)(group.getCfr()*10);
         if (percent > -1) {
-            Shape groupBar = new Shape(x * index, (y+110)-percent, width, percent, new Color(0,0,255));
+            Shape groupBar = new Shape(x * index, (y+110)-percent, width, 
+                percent, new Color(0,0,255));
             this.window.addShape(groupBar);
         } else {
-            TextShape groupBar = new TextShape(x * index, (y+90)-percent, "NA", new Color(0,0,255));
+            TextShape groupBar = new TextShape(x * index, (y+90)-percent, 
+                "NA", new Color(0,0,255));
             this.window.addShape(groupBar);
         }
-        TextShape groupName = new TextShape((x * index)-10, y+120, group.getName());
+        TextShape groupName = new TextShape((x * index)-10, y+120, 
+            group.getName());
         this.window.addShape(groupName);
         DecimalFormat formatter = new DecimalFormat("###.#");
-        TextShape groupCFR = new TextShape((x * index)-4, y+140, formatter.format(group.getCfr()) + "%");
+        TextShape groupCFR = new TextShape((x * index)-4, y+140, 
+            formatter.format(group.getCfr()) + "%");
         this.window.addShape(groupCFR);
     }
 }
