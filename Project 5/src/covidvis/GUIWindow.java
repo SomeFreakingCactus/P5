@@ -39,14 +39,15 @@ public class GUIWindow {
 
 
     private void displayState(int index) {
-        int xPos = 50 + 80*index;
-        int yPos = 20;
         State state = calc.getStateByIndex(index);
-        TextShape text = new TextShape(0,0,state.getName());
+        SinglyLinkedList<EthnicityGroup> list = state.getList();
+        for (int i = 0; i < list.size(); i++) {
+            displayBar(list.get(i), 20 + 80 * i);
+        }
     }
 
 
     private void displayBar(EthnicityGroup group, int pos) {
-        // TODO
+        
     }
 }
