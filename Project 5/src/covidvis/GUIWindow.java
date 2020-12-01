@@ -1,6 +1,7 @@
 package covidvis;
 
 import cs2.Button;
+import cs2.TextShape;
 import cs2.Window;
 
 /**
@@ -9,7 +10,7 @@ import cs2.Window;
  * @author all
  * @version 2020.11.30
  */
-public class DisplayWindow {
+public class GUIWindow {
     private Window window;
     private Calculator calc;
     private Button alpha;
@@ -20,7 +21,7 @@ public class DisplayWindow {
     /**
      * Display Window
      */
-    public DisplayWindow() {
+    public GUIWindow() {
         // Nothing done yet
     }
 
@@ -38,7 +39,10 @@ public class DisplayWindow {
 
 
     private void displayState(int index) {
-        // TODO
+        int xPos = 50 + 80*index;
+        int yPos = 20;
+        State state = calc.getStateByIndex(index);
+        TextShape text = new TextShape(0,0,state.getName());
     }
 
 
