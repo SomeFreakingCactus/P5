@@ -166,21 +166,21 @@ public class GUIWindow {
         int y = this.window.getHeight() / 4;
         int width = 20;
         int percent = (int)(group.getCfr()*10);
+        TextShape groupName = new TextShape((x * index)-10, y+120, 
+            group.getName());
+        this.window.addShape(groupName);
         if (percent > -1) {
             Shape groupBar = new Shape(x * index, (y+110)-percent, width, 
                 percent, new Color(0,0,255));
             this.window.addShape(groupBar);
+            DecimalFormat formatter = new DecimalFormat("###.#");
+            TextShape groupCFR = new TextShape((x * index)-4, y+140, 
+                formatter.format(group.getCfr()) + "%");
+            this.window.addShape(groupCFR);
         } else {
             TextShape groupBar = new TextShape(x * index, (y+90)-percent, 
                 "NA", new Color(0,0,255));
             this.window.addShape(groupBar);
         }
-        TextShape groupName = new TextShape((x * index)-10, y+120, 
-            group.getName());
-        this.window.addShape(groupName);
-        DecimalFormat formatter = new DecimalFormat("###.#");
-        TextShape groupCFR = new TextShape((x * index)-4, y+140, 
-            formatter.format(group.getCfr()) + "%");
-        this.window.addShape(groupCFR);
     }
 }
