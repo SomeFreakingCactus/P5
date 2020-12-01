@@ -19,20 +19,22 @@ public class Input {
         // This method is intentionally empty
     }
 
+
     /**
      * Main code output
-     * @throws ParseException 
-     * @throws FileNotFoundException 
+     * 
+     * @throws ParseException
+     * @throws FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException {
-    	String file1 = "";
-        //file1 = args[0];
-    	file1 = "Cases_and_Deaths_by_race_CRDT_Sep2020.csv";
+        String file1 = "";
+        // file1 = args[0];
+        file1 = "Cases_and_Deaths_by_race_CRDT_Sep2020.csv";
         InputReader reader = new InputReader(file1);
         State[] states = reader.getStates();
         Calculator calc = new Calculator(states);
         for (int i = 0; i < states.length; i++) {
-        	System.out.println(states[i].toString());
+            System.out.println(states[i].toString());
         }
         new GUIWindow(calc);
     }

@@ -26,6 +26,7 @@ public class State {
         population = pop;
     }
 
+
     /**
      * Returns name of State
      * 
@@ -34,6 +35,7 @@ public class State {
     public String getName() {
         return stateName;
     }
+
 
     /**
      * Returns list of ethnicity groups in state
@@ -44,8 +46,10 @@ public class State {
         return population;
     }
 
+
     /**
      * Turns State's population into a string
+     * 
      * @return The State in a string
      */
     public String toString() {
@@ -67,6 +71,7 @@ public class State {
         sb.append("=====");
         return sb.toString();
     }
+
 
     /**
      * Sorts the state's ethnicity groups by CFR with selection sort.
@@ -99,6 +104,7 @@ public class State {
             }
         }
     }
+
 
     /**
      * Sorts the state's ethnicity groups by name with selection sort.
