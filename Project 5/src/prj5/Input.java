@@ -28,8 +28,7 @@ public class Input {
      */
     public static void main(String[] args) throws FileNotFoundException {
         String file1 = "";
-        // file1 = args[0];
-        file1 = "Cases_and_Deaths_by_race_CRDT_Sep2020.csv";
+        file1 = args[0];
         InputReader reader = new InputReader(file1);
         State[] states = reader.getStates();
         Calculator calc = new Calculator(states);

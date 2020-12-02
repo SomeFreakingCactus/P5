@@ -84,16 +84,6 @@ public class State {
         if (population.size() > 1) {
             for (int j = 0; j < size; j++) {
                 for (int i = 0; i < size - 1; i++) {
-                    // in the case of a tie
-                    if (population.get(i).compareCFR(population.get(i
-                        + 1)) == 0) {
-                        if (population.get(i).compareName(population.get(i
-                            + 1)) > 0) {
-                            EthnicityGroup small = population.get(i + 1);
-                            population.remove(i + 1);
-                            population.add(i, small);
-                        }
-                    }
                     if (population.get(i).compareCFR(population.get(i
                         + 1)) < 0) {
                         EthnicityGroup small = population.get(i + 1);
